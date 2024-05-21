@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="row" novalidate [formGroup]="formGroup" (ngSubmit)="filter()">
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Country</label>
+                    <select class="form-control" formControlName="countryUid">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let item of countries" [ngValue]="item.uid">{{item.code}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Broker</label>
+                    <select class="form-control" formControlName="brokerUid">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let item of brokers" [ngValue]="item.uid">{{item.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="form-group">
+                    <label>Sipp Code</label>
+                    <select class="form-control" formControlName="vehicleCategoryUid">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let item of vehicleCategories" [ngValue]="item.uid">{{item.code}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6" style="margin-top: 32px;">
+                <button class="btn btn-primary btn-default" (click)="filter()">Filter</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <app-rates-general-promo></app-rates-general-promo> -->
+<form class="needs-validation pt-3 d-flex flex-column" novalidate [formGroup]="formGroup">
+    <div class="d-flex flex-column mt-2">
+        <div class="table-responsive">
+            <app-editable-grid [addEmitter]="newPromoEmitter" [newRowPrototype]="newPromoRowPrototype" [rowData]="rowData" [columnDefs]="columnDefs" [decorator]="promoDecorator" [editRowEmitter]="autoRowEditEmitter" [stopRowEditiingEmitter]="stopRowEditiingEmitter"></app-editable-grid>
+            <button class="btn btn-primary btn-default mt-1" (click)="insertNewPromo()">Insert Promo</button>
+        </div>
+    </div>
+</form>
+
+<!-- <input type="text" class="form-control col-lg-4 col-md-4 col-sm-4 col-12" /> -->

@@ -1,0 +1,19 @@
+<div class="d-flex flex-column">
+    <div>
+        <label>Values</label>
+    </div>
+    <div class="row list-entry mb-1">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <app-editable-grid [addEmitter]="newExtraValueEmitter" [newRowPrototype]="newExtraValueRowPrototype"
+                    [suppressRowClickSelection]="true" [rowData]="rowData"
+                    [decorator]="extraValueDecorator"></app-editable-grid>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary btn-default size-normal mt-2" (click)="insertExtraValue()">
+                    Insert Values
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

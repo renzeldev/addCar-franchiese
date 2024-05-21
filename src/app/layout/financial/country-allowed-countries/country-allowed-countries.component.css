@@ -1,0 +1,26 @@
+tr td {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 14px;
+}
+tr th {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    font-size: 16px;
+}
+.admin-table {
+    width: 100%;
+}
+tr.mat-row{
+    height: 32px;
+}
+tr.mat-header-row {
+    height: 36px;
+}
+tr.mat-header-row th {
+    font-weight: 550;
+}
+.table-container {
+    height: 250px;
+    overflow-y: auto;
+}

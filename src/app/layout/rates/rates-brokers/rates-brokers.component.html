@@ -1,0 +1,35 @@
+<div class="row mt-4">
+    <div class="col-md-12 col-sm-8 col-lg-12  d-flex flex-row">
+        <!-- <div class="row"> -->
+        <div class="col-md-2">
+            <label>Country</label>
+            <select class="form-control" [(ngModel)]="brokerCountryUid" (change)="filterBrokers()">
+                <option [ngValue]="null">Select Country</option>
+                <option *ngFor="let country of countries" [ngValue]="country.uid">{{country.code}}</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label>Broker</label>
+            <select class="form-control" [(ngModel)]="selectedBrokerUid">
+                <option [ngValue]="null">Select Broker</option>
+                <option *ngFor="let broker of countryBrokers" [ngValue]="broker.uid">{{broker.name}}</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-center align-items-end">
+            <button class="btn btn-primary btn-default col-md-2" (click)="addBroker()">Add</button>
+        </div>
+    </div>
+</div>
+<form class="needs-validation pt-3 d-flex flex-column" novalidate [formGroup]="formGroup">
+    <div class="col-6">
+        <div class="table-responsive">
+            <app-editable-grid [newRowPrototype]="newBrokerPrototype" [rowData]="rowData" [decorator]="brokerDecorator"
+                [columnDefs]="columnDefs">
+            </app-editable-grid>
+        </div>
+    </div>
+    <!-- <div class="d-flex justify-content-center mt-2" style="column-gap: 20px;">
+        <button class="btn btn-primary btn-default">Submit</button>
+        <button class="btn btn-outline-dark">Cancel</button>
+    </div> -->
+</form>

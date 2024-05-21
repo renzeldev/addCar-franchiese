@@ -1,0 +1,106 @@
+<div>
+  <h4>Values used by default</h4>
+  <hr>
+  <form class="needs-validation" [formGroup]="formGroup" novalidate (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="form-group col">
+            <label for="modelName">Model name</label>
+            <input class="form-control" type="text" placeholder="" maxlength="100" formControlName="modalName" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label for="guaranteedModel">Guaranteed model</label>
+            <!-- <input class="form-control" type="text" placeholder="" maxlength="100" formControlName="guaranteedModal" /> -->
+            <select class="form-control" formControlName="isGuaranteedModel">
+              <option [ngValue]="true">Yes</option>
+              <option [ngValue]="false">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label for="guaranteedYear">Guaranteed year</label>
+            <input class="form-control" type="text" placeholder="" maxlength="4" formControlName="guaranteedYear" />
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label for="mileageApplication">Mileage application</label>
+            <input class="form-control" type="text" placeholder="" maxlength="50" formControlName="maxMileage" />
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
+            <label for="fuelPolicy">Fuel policy</label>
+            <input class="form-control" type="text" placeholder="" maxlength="50" formControlName="fuelPolicty" />
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="form-group col">
+                <label for="doors">Doors</label>
+                <input class="form-control" type="text" placeholder="" maxlength="50" formControlName="doors" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="form-group col">
+                <label for="passengers">Passengers</label>
+                <input class="form-control" type="text" placeholder="" maxlength="50" formControlName="passengers" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="form-group col">
+                <label for="minDriverAge">Min driver age</label>
+                <input class="form-control" type="text" placeholder="" maxlength="50" formControlName="minDriverAge" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="form-group col">
+                <label for="maxDriverAge">Max driver age</label>
+                <input class="form-control" type="text" placeholder="" maxlength="50" formControlName="maxDriverAge" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="form-group col">
+                <label for="fourWD">Four wd</label>
+                <select class="form-control" formControlName="isFourWheelDrive">
+                  <option [ngValue]="true">Yes</option>
+                  <option [ngValue]="false">No</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="form-group col">
+                <label for="deposit">Deposit</label>
+                <input class="form-control" type="text" placeholder="" maxlength="50" formControlName="requiredDeposit" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,99 @@
+<div class="row">
+    <div class="col-md-8" [formGroup]="formGroup">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label><span style="color:red">*</span><span>Rate Code</span></label>
+                    <input type="text" id="rate" class="form-control" formControlName="code" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label><span style="color:red">*</span><span>Country</span></label>
+                    <select *ngIf="!!rateUid" class="form-control" formControlName="countryUid" disabled>
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let item of countries" [ngValue]="item.uid">{{item.code}}</option>
+                    </select>
+                    <select *ngIf="!rateUid" class="form-control" formControlName="countryUid">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let item of countries" [ngValue]="item.uid">{{item.code}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label><span style="color:red">*</span><span>Currency</span></label>
+                    <select class="form-control" formControlName="currencyUid">
+                        <option [ngValue]="null"></option>
+                        <option *ngFor="let item of currencies" [ngValue]="item.uid">{{item.code}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <label>Description</label>
+                <input type="text" id="rate" class="form-control" formControlName="description" />
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <div class="d-flex align-items-center w-100">
+                    <mat-checkbox formControlName="isActive">Is Active</mat-checkbox>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 d-flex justify-content-center m-4">
+                <button class="btn btn-primary btn-default mr-3" (click)="createRate()">Submit</button>
+                <button class="btn btn-outline-dark ml-3" (click)="cancelCreate()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <app-rates-included-locations [rateUid]="rateUid" [rateInfo]="rateInfo"></app-rates-included-locations>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="d-flex flex-column mt-2 mb-4">
+            <div class="table-responsive">
+                <app-editable-grid [suppressClickEdit]="true" [addEmitter]="newSeasonEmitter" [autoSelectRowEmitter]="autoSelectRowEmitter" [editRowEmitter]="autoEditRowEmitter"
+                    [newRowPrototype]="newSeasonRowPrototype" [rowData]="rowData" [stopRowEditiingEmitter]="stopRowEditiingEmitter"
+                    [decorator]="seasonsDecorator" >
+                </app-editable-grid>
+            </div>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary btn-default size-normal mt-2" (click)="insertSeason()">
+                    Add Season
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<mat-tab-group #matGroup (selectedTabChange)="tabChanged($event)" (click)="tabClick($event)">
+    <mat-tab label="General Data">
+        <app-rates-general-sipp-code-list [vehicleCategories]="vehicleCategories" [cancelSeasonChangeEmitter]="cancelSeasonChangeEmitter" [isRowEditing]="isRowEditing"></app-rates-general-sipp-code-list>
+
+        <app-rates-general-mileage-day-breaks [vehicleCategories]="vehicleCategories" [cancelSeasonChangeEmitter]="cancelSeasonChangeEmitter"
+            [addDayBreakEmitter]="newDayBreakEmitter"></app-rates-general-mileage-day-breaks>
+        <!-- <div class="w-100 justify-content-center">
+            <div class="d-flex justify-content-center" style="column-gap: 20px;">
+                <button class="btn btn-primary btn-default">Submit</button>
+                <button class="btn btn-outline-dark">Cancel</button>
+            </div>
+        </div> -->
+    </mat-tab>
+    <mat-tab label="Extras">
+        <app-rates-general-extras [discardRowDataChange]="discardRowDataChange" [isRowEditing]="isRowEditing" [cancelSeasonChangeEmitter]="cancelSeasonChangeEmitter"></app-rates-general-extras>
+    </mat-tab>
+    <mat-tab label="Excess">
+        <app-rates-general-excess [discardRowDataChange]="discardRowDataChange" [isRowEditing]="isRowEditing" [cancelSeasonChangeEmitter]="cancelSeasonChangeEmitter"></app-rates-general-excess>
+    </mat-tab>
+    <!-- <mat-tab label="Promo">
+        <app-rates-general-promo></app-rates-general-promo>
+    </mat-tab> -->
+    <mat-tab label="Brokers">
+        <app-rates-brokers [rateUid]="rateUid" [countries]="countries"></app-rates-brokers>
+    </mat-tab>
+</mat-tab-group>
+
+<!-- <input type="text" class="form-control col-lg-4 col-md-4 col-sm-4 col-12" /> -->

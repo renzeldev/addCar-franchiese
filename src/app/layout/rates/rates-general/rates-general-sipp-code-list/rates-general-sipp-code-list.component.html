@@ -1,0 +1,38 @@
+<div class="row list-entry mb-1">
+  <div class="col-lg-12">
+    <div class="table-responsive">
+      <app-editable-grid [suppressClickEdit]="true" [addEmitter]="newSippEmitter" [newRowPrototype]="newSippCodeRowPrototype" [editRowEmitter]="autoRowEditEmitter" [suppressRowClickSelection]="true"
+        [columnDefs]="columnDefs" [rowData]="rowData" [decorator]="sippCodeDecorator" [selectAllRowEmitter]="selectAllRowEmitter" [stopRowEditiingEmitter]="stopRowEditiingEmitter"></app-editable-grid>
+    </div>
+    <div *ngIf="isRowEditing" class="row m-2">
+      <select class="form-control col-2" [(ngModel)]="newSippCodeUid">
+        <option [ngValue]="null">Select SIPP CODE</option>
+        <option *ngFor="let item of availableVehicleCategories" [ngValue]="item.uid">{{item.code}}</option>
+      </select>
+      <button class="btn btn-primary btn-default ml-2" (click)="insertNewSipp()">Insert Sipp</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="isRowEditing" class="row mt-4 mb-4 pl-4">
+  <div class="btn-group align-items-end">
+    <button type="button" class="btn btn-primary btn-default" (click)="selectSipp()">Select</button>
+    <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" (click)="selectAllCells()">All</a>
+    </div>
+  </div>
+  <div class="ml-4">
+      <label>% percent</label>
+      <input class="form-control" placeholder="10%" [(ngModel)]="percent">
+  </div>
+  <div class="ml-4">
+      <label>Amount</label>
+      <input class="form-control" placeholder="12923" [(ngModel)]="amount">
+  </div>
+  <div class="d-flex ml-4" style="margin-top: 32px;">
+      <button class="btn btn-primary btn-default h-fit" (click)="updateSipp()">Update</button>
+  </div>
+
+</div>

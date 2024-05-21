@@ -1,0 +1,5 @@
+<a *ngIf="editingSeasonStatus && !isEdit" (click)="btnClickedHandler()"><i class="far fa-edit"></i></a>
+<div class="d-flex gap-1" *ngIf="editingSeasonStatus && isEdit">
+    <a class='mr-1' (click)="btnCheckClickedHandler()"><i class="fa fa-check"></i></a>
+    <a (click)="btnCloseClickedHandler()"><i class="fa fa-times"></i></a>
+</div>

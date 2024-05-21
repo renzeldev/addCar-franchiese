@@ -1,0 +1,36 @@
+<h5>Allowed Countries</h5>
+<form class="needs-validation" novalidate (ngSubmit)="addCountry()">
+  <div class="row form-group">
+    <div class="col-9">
+      <input class="form-control" type="text" id="country" maxlength="100" [(ngModel)]="allowedReferenceName" [formControl]="control" [matAutocomplete]="auto"/>
+      <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let reference of filteredallowedReferences | async" [value]="reference">{{reference}}</mat-option>
+      </mat-autocomplete>
+    </div>
+    <div class="col-3">
+      <button type="submit" class="btn btn-primary btn-default mr-3" [disabled]="!allowedReferenceName">
+        Add
+      </button>
+    </div>
+  </div>
+</form>
+<div class="table-container mt-2">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reference of references; let i = index;">
+          <td>{{reference.countryReferenceName}}</td>
+          <td>
+            <a href="javascript:void(0);" class="" (click)="delete(reference)">
+              <i class="fas fa-trash"></i>&nbsp;
+            </a>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>

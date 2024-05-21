@@ -1,0 +1,20 @@
+<div *ngIf="!isEdit" class="d-flex justify-content-center">
+    <div>{{ params.displayName }}</div>
+    <div class="ml-1" (click)="editDayBreak()">
+        <i class="far fa-edit"></i>
+    </div>
+    <div class="ml-1" (click)="deleteDayBreak()">
+        <i class="far fa-trash-alt"></i>
+    </div>
+</div>
+<div *ngIf="isEdit" class="d-flex">
+    <input class="w-25px" [(ngModel)]="firstDay" />
+    <span>-</span>
+    <input class="w-25px" [(ngModel)]="secondDay" />
+    <div (click)="checkDayBreak()">
+        <span class="mr-2"><i class="fa fa-check"></i></span>
+    </div>
+    <div (click)="cancelDayBreak()">
+        <span><i class="fa fa-times"></i></span>
+    </div>
+</div>

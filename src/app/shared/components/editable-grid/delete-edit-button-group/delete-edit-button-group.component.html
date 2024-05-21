@@ -1,0 +1,6 @@
+<div class="d-flex gap-1">
+    <a class='mr-1' *ngIf="!editingStatus" (click)="btnEditClickedHandler()"><i class="far fa-edit"></i></a>
+    <a class='mr-1' *ngIf="!editingStatus" (click)="btnTrashClickedHandler()"><i class="far fa-trash-alt"></i></a>
+    <a class='mr-1' *ngIf="editingStatus" (click)="btnCheckClickedHandler()"><i class="fa fa-check"></i></a>
+    <a *ngIf="editingStatus" (click)="btnCloseClickedHandler()"><i class="fa fa-times"></i></a>
+</div>

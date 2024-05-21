@@ -1,0 +1,11 @@
+<div class="d-flex">
+    <input class="w-25px" [(ngModel)]="firstDay" />
+    <span>-</span>
+    <input class="w-25px" [(ngModel)]="secondDay" />
+    <div (click)="checkDayBreak()">
+        <span class="mr-2"><i class="fa fa-check"></i></span>
+    </div>
+    <div (click)="cancelDayBreak()">
+        <span><i class="fa fa-times"></i></span>
+    </div>
+</div>

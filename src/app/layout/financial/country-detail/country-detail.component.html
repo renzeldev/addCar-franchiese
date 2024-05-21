@@ -1,0 +1,114 @@
+<h4>Country Details</h4>
+<div>
+  <form class="needs-validation" novalidate [formGroup]="formGroup" (ngSubmit)="save()">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="code" class="required">Code</label>
+            <input class="form-control" type="text" formControlName="code" id="code" placeholder="Enter Code here"
+              maxlength="200"
+              [ngClass]="{ 'is-invalid': submitted && fields.code.errors }" />
+            <div *ngIf="submitted && fields.code.errors" class="invalid-feedback d-block">
+              <div *ngIf="fields.code.errors.required">code is required.</div>
+              <div *ngIf="fields.code.errors.maxlength">code must be less 200 characters</div>
+            </div>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="iso" class="required">ISO</label>
+            <input class="form-control" type="text" formControlName="iso" id="iso" placeholder="AF" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="description" class="required">Description</label>
+            <input class="form-control" type="text" formControlName="description" id="description"
+              placeholder="Write description here" />
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="numericIso" class="required">Numeric ISO</label>
+            <input class="form-control" type="text" formControlName="numericIso" id="numericIso" placeholder="" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="phoneCode" class="required">Phone Country Code</label>
+            <input class="form-control" type="text" formControlName="phoneCode" id="phoneCode"
+              placeholder="93" />
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="tax" class="required">VAT Tax, %</label>
+            <input class="form-control" type="text" formControlName="tax" id="tax"
+              placeholder="20%" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="refuelCharge" class="required">Refuel Charge</label>
+            <input class="form-control" type="text" formControlName="refuelCharge" id="refuelCharge"
+              placeholder="Refuel Charge" />
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="row">
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                <label for="rateMin" class="required">Min Rate</label>
+                <input class="form-control" type="text" formControlName="rateMin" id="rateMin"
+                  placeholder="Min Rate" />
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+                <label for="rateMax" class="required">Max Rate</label>
+                <input class="form-control" type="text" formControlName="rateMax" id="rateMax"
+                  placeholder="Max Rate" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="missingFuelCharge" class="required">Missing Fuel Charge</label>
+            <input class="form-control" type="text" formControlName="missingFuelCharge" id="missingFuelCharge"
+              placeholder="Missing Fuel Charge" />
+          </div>
+          <div class="form-group col-lg-3 col-md-3 col-sm-3 col-12">
+            <label for="discountMax" class="required">Max Discount, %</label>
+            <input class="form-control" type="text" formControlName="discountMax" id="discountMax"
+              placeholder="20%" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-12">
+            <label for="penalty" class="required">Penalty</label>
+            <input class="form-control" type="text" formControlName="penalty" id="penalty"
+              placeholder="Penalty" />
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <app-country-allowed-countries [countryDetailUid]="countryDetailUid"></app-country-allowed-countries>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-group col-md-3">
+        <label for="category">Category</label>
+        <mat-select class="form-control" [placeholder]="'Select categories'" id="categories"
+          (selectionChange)="onCategoryChange($event)">
+          <input class="form-control" type="text">
+          <mat-option class="mat-primary" *ngFor="let item of vehicleCategories"
+            [value]="item">{{item.code}}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <app-country-category-settings (onSubmit)="submit($event)" [countryDetailUid]="countryDetailUid" [changeCategory]="changeCategory" [submitCategorySetting]="submitCategorySetting"></app-country-category-settings>
+    <div class="row">
+      <div class="form-group col-lg-8 col-md-8 col-sm-12 col-12">
+        <div class="d-flex justify-content-center" style="column-gap: 20px;">
+          <button type="submit" class="btn btn-primary btn-default" [disabled]="isSubmitting">
+            <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Submit
+          </button>
+          <button class="btn btn-outline-dark btn-default">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

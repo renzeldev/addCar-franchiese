@@ -1,0 +1,14 @@
+<div class="d-flex flex-column">
+    <div>
+        <label>Extra Definitions</label>
+    </div>
+    <div class="row list-entry mb-1">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <app-editable-grid [addEmitter]="newExtraDefinitionEmitter" [newRowPrototype]="newExtraDefinitionRowPrototype"
+                    [suppressRowClickSelection]="true" [rowData]="rowData"
+                    [decorator]="extraDetailDecorator"></app-editable-grid>
+            </div>
+        </div>
+    </div>
+</div>

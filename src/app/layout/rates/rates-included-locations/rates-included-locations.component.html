@@ -1,0 +1,37 @@
+<div class="d-flex flex-column mt-2">
+    <h4 style="font-weight: normal;">Included Locations</h4>
+    <div class="row mt-2 mb-2">
+        <div class="col-8">
+            <label>Locations</label>
+            <select class="form-control" [(ngModel)]="selectedLocation">
+                <option></option>
+                <option *ngFor="let location of availableLocations" [ngValue]="location.uid">{{location.name}}</option>
+            </select>
+        </div>
+        <div class="col-4 d-flex align-items-end">
+            <div class="d-flex justify-content-around align-items-center w-100">
+                <button class="btn btn-primary btn-default" (click)="addRateLocation()">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table">
+            <thead class="bg-light h6">
+                <tr>
+                    <th scope="col">Location</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let location of includedLocations">
+                    <td>{{location.locationCode}}</td>
+                    <td>{{location.locationName}}</td>
+                    <td>
+                        <a><i class="far fa-trash-alt" (click)="removeRateLocation(location)"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
